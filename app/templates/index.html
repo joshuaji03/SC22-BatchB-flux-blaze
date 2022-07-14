@@ -1,3 +1,665 @@
-<h2>
-    The index works.
-</h2>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Age Detection</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="../static/assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+      <link href="{{ url_for('static',filename='/css/styles.css') }}" rel="stylesheet">
+        <link href="../static/css/styles.css" rel="stylesheet" />
+    </head>
+    <body id="page-top">
+
+      <!--start-->
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand" href="https://www.ai-camp.org/" target="_blank"><img src="https://i.imgur.com/QFfUvAH.png" alt="..." /></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars ms-1"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="#services">How It Works</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#portfolio">More About Our AI</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#about">Journey</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+      <!---end-->
+      
+        <!-- Masthead-->
+        <header class="masthead">
+            <div class="container">
+                <div class="masthead-subheading"></div>
+                <div class="masthead-heading text-uppercase">A.I. Camp Age<br> Detection</div>
+                  <a class="mb-0" id='seefood_button'>
+                      <form id='seefood_form' method=post enctype=multipart/form-data>
+                          <input id="seefood_input_field" name="file" type="file" onchange="this.form.submit();" hidden/>
+                      </form>
+                      <button href="#" class="btn btn-primary btn-xl text-uppercase">
+                         Upload An Image
+                      </button>
+                  </a>
+            </div>
+        </header>
+        <!-- Services-->
+        <section class="page-section" id="services">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">How It Works</h2>
+                    <h3 class="section-subheading text-black">It's pretty simple.</h3>
+                </div>
+                <div class="row text-center">
+                    <div class="col-md-4">
+                        <span class="fa-stack fa-4x">
+                            <i class="fas fa-square fa-stack-2x text-primary"></i>
+                            <i class="fas fa-camera fa-flip fa-stack-1x text-white"></i>
+                        </span>
+                        <h4 class="my-3">Upload</h4>
+                        <p class="text-black">First things first, upload a picture of your choice with a face on it. Be sure that the image at least contains a face as that is what the AI has been trained to detect. Also be sure to only upload jpg or png files. <i>Note: The model performs better when the image is a close-up of a face.</i></p>
+                    </div>
+                    <div class="col-md-4">
+                        <span class="fa-stack fa-4x">
+                            <i class="fas fa-square fa-stack-2x text-primary"></i>
+                            <i class="fa-solid fa-spinner fa-spin-pulse fa-stack-1x text-white"></i>
+                        </span>
+                        <h4 class="my-3">Wait</h4>
+                        <p class="text-black">Wait a few seconds as the AI runs through your image. Our AI has the capability to detect ages up to 60+. It has trained with over 6000 images and has at least 50% accuracy in all age ranges.</p>
+                    </div>
+                    <div class="col-md-4">
+                        <span class="fa-stack fa-4x">
+                            <i class="fas fa-square fa-stack-2x text-primary"></i>
+                            <i class="fas fa-solid fa-laptop fa-bounce fa-stack-1x text-white"></i>
+                        </span>
+                        <h4 class="my-3">Results</h4>
+                        <p class="text-black">Once the AI is done processing your image, it should give you an age range and its percentage of certainty. Hopefully our AI got it right and if it did, you can keep on trying till you stump it. </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Portfolio Grid-->
+        <section class="page-section bg-gradient-info" id="portfolio">
+           <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">More about our AI</h2>
+                    <h3 class="section-subheading text-black">Some specifics </h3>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-sm-6 mb-4">
+                        <!-- Portfolio item 1-->
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1">
+                                <div class="portfolio-hover">
+                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                </div> 
+                                <img class="img-fluid" src="{{url_for('static',filename='/assets/img/portfolio/purpose.jpg')}}" alt="..." style="width:600px;height:350px;"/>
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">Purpose</div>
+                                <div class="portfolio-caption-subheading text-black">Why we made this AI</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 mb-4">
+                        <!-- Portfolio item 2-->
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal2">
+                                <div class="portfolio-hover">
+                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <img class="img-fluid" src="{{url_for('static',filename='/assets/img/portfolio/results.jpg')}}" alt="..." style="width:600px;height:350px;"/>
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">Possible Answers</div>
+                                <div class="portfolio-caption-subheading text-black">Age Ranges of our AI</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 mb-4">
+                        <!-- Portfolio item 3-->
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal3">
+                                <div class="portfolio-hover">
+                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <img class="img-fluid" src="{{url_for('static',filename='/assets/img/portfolio/stats.jpg')}}" alt="..." style="width:600px;height:350px;"/>
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">Statistics</div>
+                                <div class="portfolio-caption-subheading text-black">Some of our AI data</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 mb-4 mb-lg-0">
+                        <!-- Portfolio item 4-->
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal4">
+                                <div class="portfolio-hover">
+                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <img class="img-fluid" src="{{url_for('static',filename='/assets/img/portfolio/PR_curve.jpg')}}" alt="..." style="width:600px;height:350px;"/>
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">PR curve</div>
+                                <div class="portfolio-caption-subheading text-black">Evaluating our model</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 mb-4 mb-sm-0">
+                        <!-- Portfolio item 5-->
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal5">
+                                <div class="portfolio-hover">
+                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <img class="img-fluid" src="{{url_for('static',filename='/assets/img/portfolio/dataset.jpg')}}" alt="..." style="width:600px;height:350px;"/>
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">Dataset</div>
+                                <div class="portfolio-caption-subheading text-black">Collecting and Labeling our data</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+                        <!-- Portfolio item 6-->
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal6">
+                                <div class="portfolio-hover">
+                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <img class="img-fluid" src="{{url_for('static',filename='/assets/img/portfolio/augmentation.jpg')}}" alt="..." style="width:600px;height:350px;"/>
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">Retraining</div>
+                                <div class="portfolio-caption-subheading text-black">Data Augmentation and Parameters</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- About-->
+        <section class="page-section" id="about">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">Journey</h2>
+                    <h3 class="section-subheading text-black">The steps we took to make our Age-Detection AI</h3>
+                </div>
+                <ul class="timeline">
+                    <li>
+                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="static/assets/img/about/1.jpg"  alt="..." /></div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4>Step 1</h4>
+                                <h4 class="subheading">Collecting data</h4>
+                            </div>
+                            <div class="timeline-body"><p class="text-black">We used techniques such as web scraping on google and using Kaggle datasets to put together a dataset of nearly 3000 images. After uploading the images to roboflow we then annotated the data to make sure the computer knew what to look for.</p></div>
+                        </div>
+                    </li>
+                    <li class="timeline-inverted">
+                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="static/assets/img/about/2.jpg" height = "200" width = "200" alt="..." /></div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4>Step 2</h4>
+                                <h4 class="subheading">Choosing Our Model</h4>
+                            </div>
+                            <div class="timeline-body"><p class="text-black">After having our dataset complete we had to choose which machine learning model we would use to create our Age-Detection AI. Taking into account Google Colab's restrictions and gpu load we setled for Yolov5s, a quick yet accurate model.</p></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="static/assets/img/about/3.jpg" alt="..." /></div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4>Step 3</h4>
+                                <h4 class="subheading">Training Our Model</h4>
+                            </div>
+                            <div class="timeline-body"><p class="text-black">After we picked out Yolov5s we chose our training parameters and used Google Colab to run our mdoel training. We also used WandB in order to track our results.</p></div>
+                        </div>
+                    </li>
+                    <li class="timeline-inverted">
+                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="static/assets/img/about/4.jpg" alt="..." /></div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4>Step 4</h4>
+                                <h4 class="subheading">Designing Our Website</h4>
+                            </div>
+                            <div class="timeline-body"><p class="text-black">Having our model ready to go the last step was to create a presentable website for others to try out our AI! With our Frontend and Backend team working in tandem we designed this website with our model integrated.</p></div>
+                        </div>
+                    </li>
+                    <li class="timeline-inverted">
+                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="https://static.wixstatic.com/media/12b467_a4ceef0f338c41c7885cb083ea36a00f~mv2_d_1742_1743_s_2.png/v1/fill/w_216,h_224,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/ai%20camp%20logo.png" alt="..." /></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <!-- Team-->
+        <section class="page-section bg-black" id="team">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">Our Team</h2>
+                    <h3 class="section-subheading text-black">Meet our team members!</h3>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="team-member">
+                            <img class="mx-auto rounded-circle" src="static/assets/img/team/yuh2.png" alt="..." />
+                            <h4>Tony Nguyen</h4>
+                            <p class="text-black">Is an incoming junior in high school this year who joined this camp out of a newfound interest in computer science. Tony’s role in this group was mainly to gather data, train the AI, and design the Front End of this website. In his freetime, he likes to play games, read, and binge-watch shows. In the future, he aspires to either go down the medical or cs path, and this project will be a great factor in that decision. </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="team-member">
+                            <img class="mx-auto rounded-circle" src="static/assets/img/team/9.png" alt="..." />
+                            <h4>Vivian Liu</h4>
+                            <p class="text-black">A rising sophomore at Monta Vista Highschool. Interested in computer science and enjoys doing digital art/animation and playing tennis.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="team-member">
+                            <img class="mx-auto rounded-circle" src="static/assets/img/team/colin.jpg" alt="..." />
+                            <h4>Colin Hua</h4>
+                            <p class="text-black">An incoming junior who will major in computer science. He took this camp to learn more about the type of work and development process in a specific field of his upcoming major.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="team-member">
+                          <img class="mx-auto rounded-circle" src="static/assets/img/team/9.png" alt="..." />
+                          <h4>Zalea Nunes</h4>
+                          <p class="text-black">A rising freshman who is interested in math, robotics, computer science, and other sciences. She's done two projects with AI camp using NLP and CV. In her free time, she likes to read, play piano, and watch YouTube.
+                          </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="team-member">
+                            <img class="mx-auto rounded-circle" src="static/assets/img/team/Lennon.jpg" alt="..." />
+                            <h4>Lennon Wielechowski</h4>
+                            <p class="text-black">A rising freshman interested in computer science. He does not know what he wants to do with his life.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="team-member">
+                            <img class="mx-auto rounded-circle" src="static/assets/img/team/9.png" alt="..." />
+                            <h4>Sanjiv Saravanan</h4>
+                            <p class="text-black">A rising junior who is interested in computer science. He likes to play basketball and read in his free time.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="team-member">
+                            <img class="mx-auto rounded-circle" src="static/assets/img/team/1.jpg" alt="..." />
+                            <h4>Joshua Ji</h4>
+                            <p class="text-black">Handsome Instructor/Pro BBall Player</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-8 mx-auto text-center"><p class="large text-black"></p></div>
+                </div>
+            </div>
+            
+        </section>
+        <!-- Clients-->
+        <div class="py-5">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-3 col-sm-6 my-3">
+                        <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="static/assets/img/logos/colab.jpg" alt="..." aria-label="Colab Logo" style="width:100px;height:100px;"/></a>
+                    </div>
+                    <div class="col-md-3 col-sm-6 my-3">
+                        <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="static/assets/img/logos/robo.jpg" alt="..." aria-label="Roboflow Logo" style="width:100px;height:100px;"/></a>
+                    </div>
+                    <div class="col-md-3 col-sm-6 my-3">
+                        <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="static/assets/img/logos/kaggle.jpg" alt="..." aria-label="Kaggle Logo" style="width:100px;height:100px;"/></a>
+                    </div>
+                    <div class="col-md-3 col-sm-6 my-3">
+                        <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="static/assets/img/logos/yoloLogo.jpg" alt="..." aria-label="yolov5 Logo" style="width:150px;height:150px;"/></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Contact-->
+        <section class="page-section" id="contact">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase text-black">Ask Questions</h2>
+                    <h3 class="section-subheading text-black">We'll be happy to answer any questions you have about our AI!</h3>
+                </div>
+                <!-- * * * * * * * * * * * * * * *-->
+                <!-- * * SB Forms Contact Form * *-->
+                <!-- * * * * * * * * * * * * * * *-->
+                <!-- This form is pre-integrated with SB Forms.-->
+                <!-- To make this form functional, sign up at-->
+                <!-- https://startbootstrap.com/solution/contact-forms-->
+                <!-- to get an API token!-->
+                <form id="contactForm" data-sb-form-api-token="de43949b-2100-4660-942e-64805e3881af">
+                    <div class="row align-items-stretch mb-5">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <!-- Name input-->
+                                <input class="form-control" id="name" type="text" placeholder="Your Name *" data-sb-validations="required" />
+                                <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
+                            </div>
+                            <div class="form-group">
+                                <!-- Email address input-->
+                                <input class="form-control" id="email" type="email" placeholder="Your Email *" data-sb-validations="required,email" />
+                                <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
+                                <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
+                            </div>
+                            <div class="form-group mb-md-0">
+                                <!-- Phone number input-->
+                                <input class="form-control" id="phone" type="tel" placeholder="Your Phone *" data-sb-validations="required" />
+                                <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group form-group-textarea mb-md-0">
+                                <!-- Message input-->
+                                <textarea class="form-control" id="message" placeholder="Your Question *" data-sb-validations="required"></textarea>
+                                <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Submit success message-->
+                    <!---->
+                    <!-- This is what your users will see when the form-->
+                    <!-- has successfully submitted-->
+                    <div class="d-none" id="submitSuccessMessage">
+                        <div class="text-center text-white mb-3">
+                            <div class="fw-bolder">Form submission successful!</div>
+                            To activate this form, sign up at
+                            <br />
+                            <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+                        </div>
+                    </div>
+                    <!-- Submit error message-->
+                    <!---->
+                    <!-- This is what your users will see when there is-->
+                    <!-- an error submitting the form-->
+                    <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Form submission successful!</div></div>
+                    <!-- Submit Button-->
+                    <div class="text-center"><button class="btn btn-primary btn-xl text-uppercase disabled" id="submitButton" type="submit">Send Message</button></div>
+                </form>
+            </div>
+        </section>
+        <!-- Footer-->
+        <footer class="footer py-4">
+            <div class="container">
+                <div class="row align-items-center">
+                  <div class="col-self-center">AI-Camp<br>Click on the icon if you want to see more of how we trained the AI and made the website!</br></div>
+                    <div class="col-self-center">
+                        <a class="btn btn-dark btn-social mx-2" href="https://youtu.be/dQw4w9WgXcQ" target="_blank" aria-label="Twitter"><i class="fab fa-youtube"></i></a>
+                    </div>
+                    <div class="col-lg-4 text-lg-end">
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Portfolio Modals-->
+        <!-- Portfolio item 1 modal popup-->
+        <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close-modal" data-bs-dismiss="modal"><img src="{{url_for('static',filename='/assets/img/close-icon.svg')}}" alt="Close modal" /></div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="modal-body">
+                                    <!-- Project details-->
+                                    <h2 class="text-uppercase">Purpose</h2>
+                                    <p class="item-intro text-black">Why we made our AI</p>
+                                    <img class="img-fluid d-block mx-auto" src="{{url_for('static',filename='/assets/img/portfolio/purpose.jpg')}}" alt="..." />
+                                    <p>Our group started with several interesting project ideas, such as identifying food, identifying camouflaged animals, and identifying pill medication. After weighing in the product specs and the time given for this project, we ultimately decided that creating an ai to identify age would be a sizeable goal. And with the several possible roadblocks surrounding this idea, it also seemed like a great challenge. An AI that can identify age has its applications. Knowing the age is very essential in medical assistance.  The older a person is, the more likely they are to have health conditions or harmful drug interactions. This AI would be useful in identifying the age of a patient with no identification, ensuring proper treatment. Age is also essential in the identification of criminals caught on security cameras.  If DNA or fingerprints are inconclusive, this AI would at least help create a more accurate profile of a criminal to release to the public.</p>
+                                   <!-- <ul class="list-inline">
+                                        <li>
+                                            <strong>Client:</strong>
+                                            Threads
+                                        </li>
+                                        <li>
+                                            <strong>Category:</strong>
+                                            Illustration
+                                        </li>
+                                    </ul> -->
+                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+                                        <i class="fas fa-xmark me-1"></i>
+                                        Close Panel
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Portfolio item 2 modal popup-->
+        <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close-modal" data-bs-dismiss="modal"><img src="{{url_for('static',filename='/assets/img/close-icon.svg')}}" alt="Close modal" /></div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="modal-body">
+                                    <!-- Project details-->
+                                    <h2 class="text-uppercase">Possible Answers</h2>
+                                    <p class="item-intro text-black">Age Ranges of our AI</p>
+                                    <img class="img-fluid d-block mx-auto" src="{{url_for('static',filename='/assets/img/portfolio/results.jpg')}}" alt="..." />
+                                    <p>The following age ranges were used to label our data. The guess our AI will make also falls into these categories. We choose to use these age ranges because giving an exact guess of a persons age with only facial data is near impossible for even humans. We had to take into account things like face coverings, makeup and plastic surgery to finalize our ranges.</p>
+                                    <ul class="list-inline">
+                                        <li>0-5</li>
+                                        <li>6-10</li>
+                                        <li>11-15</li>
+                                        <li>16-20</li>
+                                        <li>21-30</li>
+                                        <li>31-40</li>
+                                        <li>41-50</li>
+                                        <li>51-60</li>
+                                        <li>61+</li>
+                                    </ul>
+                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+                                        <i class="fas fa-xmark me-1"></i>
+                                        Close Project
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Portfolio item 3 modal popup-->
+        <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close-modal" data-bs-dismiss="modal"><img src="{{url_for('static',filename='/assets/img/close-icon.svg')}}" alt="Close modal" /></div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="modal-body">
+                                    <!-- Project details-->
+                                    <h2 class="text-uppercase">Statistics</h2>
+                                    <p class="item-intro text-black">Some of our AI data</p>
+                                    <img class="img-fluid d-block mx-auto" src="{{url_for('static',filename='/assets/img/portfolio/stats.jpg')}}" alt="..." />
+                                    <p>This graph is known as a confusion matrix. It essentially displays the accuracy of our AI. On the X-Axis we have the actual labels used for known ages of images from our dataset. On the Y-Axis we have the predicted age range from our AI. The decimal numbers are percentages of guesses out of 1 for a specific age range. With this we can see which age ranges have lower accuracy and which of the age ranges the AI is getting it confused with. Due to our limited time and data and the fact that many different factors affect how old people look, our model isn't always accurate.</p>
+                                   <!-- <ul class="list-inline">
+                                        <li>
+                                            <strong>Client:</strong>
+                                            Finish
+                                        </li>
+                                        <li>
+                                            <strong>Category:</strong>
+                                            Identity
+                                        </li>
+                                    </ul> -->
+                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+                                        <i class="fas fa-xmark me-1"></i>
+                                        Close Project
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Portfolio item 4 modal popup-->
+        <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close-modal" data-bs-dismiss="modal"><img src="{{url_for('static',filename='/assets/img/close-icon.svg')}}"  alt = "Close modal"/></div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="modal-body">
+                                    <!-- Project details-->
+                                    <h2 class="text-uppercase">PR-curve</h2>
+                                    <p class="item-intro text-black">Evaluating model performance</p>
+                                    <img class="img-fluid d-block mx-auto" src="{{url_for('static',filename='/assets/img/portfolio/PR_curve.jpg')}}" alt="..." />
+                                    <p>A high precision value means there were very few false positives and that the classifier is more permissive in the criteria for classifying something as negative. A high recall value means there were very few false negatives and that the classifier is more permissive in the criteria for classifying something as positive. The higher the curve, the more accurate the model classified the age range. Meaning the closer the line is to the top right of the graph, the better the overall predictions will be. This was used to determine if the AI required more or different training.</p>
+                                   <!-- <ul class="list-inline">
+                                        <li>
+                                            <strong>Client:</strong>
+                                            Lines
+                                        </li>
+                                        <li>
+                                            <strong>Category:</strong>
+                                            Branding
+                                        </li>
+                                    </ul> -->
+                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+                                        <i class="fas fa-xmark me-1"></i>
+                                        Close Project
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Portfolio item 5 modal popup-->
+        <div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close-modal" data-bs-dismiss="modal"><img src="{{url_for('static',filename='/assets/img/close-icon.svg')}}" alt="Close modal" /></div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="modal-body">
+                                    <!-- Project details-->
+                                    <h2 class="text-uppercase">Dataset</h2>
+                                    <p class="item-intro text-black">Collecting and Labeling our data</p>
+                                    <img class="img-fluid d-block mx-auto" src="{{url_for('static',filename='/assets/img/portfolio/dataset.jpg')}}" alt="..." />
+                                    <p>In order to obtain the hundreds of images needed for an AI as complicated as facial age recognition, we had to learn about many different ways of sourcing. The two main ways we found images for our dataset was through online databases and web scraping. Kaggle provided databases with thousands of images for frontal facing faces. With multiple different types of databases our group split off into different age ranges to clean through the dataset for clear and useful images. When it came time to add images to our dataset we had to get some of our images from web scraping to ensure that they were different. Web scraping is the process of obtain every google image on a specific page in one easy to clean through area.</p>
+                                    <!--ul class="list-inline">
+                                        <li>
+                                            <strong>Client:</strong>
+                                            Southwest
+                                        </li>
+                                        <li>
+                                            <strong>Category:</strong>
+                                            Website Design
+                                        </li>
+                                    </ul-->
+                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+                                        <i class="fas fa-xmark me-1"></i>
+                                        Close Project
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Portfolio item 6 modal popup-->
+        <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close-modal" data-bs-dismiss="modal"><img src="{{url_for('static',filename='/assets/img/close-icon.svg')}}" alt="Close modal" /></div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="modal-body">
+                                    <!-- Project details-->
+                                    <h2 class="text-uppercase">Retraining</h2>
+                                    <p class="item-intro text-black">Data Augmentation and Parameters</p>
+                                    <img class="img-fluid d-block mx-auto" src="{{url_for('static',filename='/assets/img/portfolio/augmentation.jpg')}}" alt="..." />
+                                    <p>Before our first round of training, we did research on type of data augmentation and parameters we should be using. Parameters such as the size of images used for training(dimensions), the amount of times the AI should go through the training set(known as epochs), the amount of images each grid should include(batch size) and the type of model we should use(YOLOv5). To determine the best types of data augmentation for our dataset we first did some research on the types of augmentation and what each of them accomplish . We found blur, scaling, rotation, contrast and brightness, projective rotation, grey scale, cropping and cutouts to be more useful .These augmentations serve to lengthen and add diversity to a dataset so that our AI isn’t biased. Each of our 6 group members choose 2 or 3 specific ones to individually train an AI for trial and error. We had some overlap and some differences so that we can see the different effects. With the data collected from the different tests we have determined what augmentations we will be using for the training of our final product and got insight on how to further improve our dataset.</p>
+                                    <!--ul class="list-inline">
+                                        <li>
+                                            <strong>Client:</strong>
+                                            Window
+                                        </li>
+                                        <li>
+                                            <strong>Category:</strong>
+                                            Photography
+                                        </li>
+                                    </ul-->
+                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+                                        <i class="fas fa-xmark me-1"></i>
+                                        Close Project
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <!-- * *                               SB Forms JS                               * *-->
+        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+                                                                        <!-- Main jQuery -->
+    <script src="{{ url_for('static', filename='plugins/jquery/jquery.min.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='js/theme.js')}}"></script>
+    <script>
+        // added to get upload with a button working
+        document.getElementById('seefood_button').addEventListener('click', openDialog);
+
+        function openDialog() {
+            document.getElementById('seefood_input_field').click();
+        }
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#spinner").bind("ajaxSend", function() {
+                $(this).show();
+            }).bind("ajaxStop", function() {
+                $(this).hide();
+            }).bind("ajaxError", function() {
+                $(this).hide();
+            });
+            // seefood_input_field
+            $('#seefood_button').click(function() {
+
+            });
+        });
+      
+    };
+    </script>
+    </body>
+</html>
