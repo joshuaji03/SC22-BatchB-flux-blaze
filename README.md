@@ -1,6 +1,7 @@
 ## Overview
 
 Computer vision was first attempted in the the early 1960's, with universities attempting to get a computer to see images as more than pixels. These early attempts failed, but still laid the groundwork for future development in artificial intelligence.
+
 <img src="https://i0.wp.com/definingai.com/wp-content/uploads/2020/08/History-of-Artificial-Intelligence.png?fit=860%2C513&ssl=1"  alt="Timeline img"  width="400"  height="auto"  style="object-fit:cover"/>
 
 Now after 6 decades, our team has developed a prototype Computer Vision model that can tell you your general age.
